@@ -1,0 +1,41 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "dev": "NODE_ENV=DEVELOPMENT nodemon backend/server",
+    "prod": "NODE_ENV=PRODUCTION nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "seeder": "node backend/utils/seeder",
+    "conp": "concurrently  \"npm run prod\" \"BROWSER='google-chrome-stable' npm run client \"",
+    "cond": "concurrently  \"npm run dev\" \"BROWSER='google-chrome-stable' npm run client \"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "author": "saniul islam",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.26.0",
+    "concurrently": "^6.2.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "countries-list": "^2.6.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.13",
+    "nodemailer": "^6.6.1",
+    "rsuite": "^4.10.2",
+    "stripe": "^8.160.0",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  }
+}
