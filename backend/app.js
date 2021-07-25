@@ -17,7 +17,7 @@ const app = express()
 // dotenv.config({ path: 'backend/config/config.env' })
 if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'backend/config/config.env' })
 
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 
 app.use(express.json())
 
