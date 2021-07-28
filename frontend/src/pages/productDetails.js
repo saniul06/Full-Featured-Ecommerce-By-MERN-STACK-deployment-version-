@@ -175,7 +175,7 @@ const ProductDetails = ({ match, history }) => {
 
                                 <hr />
 
-                                <ProductReview ratings={product.ratings} />
+                                <ProductReview ratings={getProduct && getProduct.ratings} />
                                 <span id="no_of_reviews">({getProduct && getProduct.reviews.length} Reviews)</span>
 
                                 <hr />
