@@ -5,7 +5,8 @@ import {
     CLEAR_ERRORS,
     CLEAR_MESSAGES,
     SAVE_SHIPPING_INFO,
-    CLEAR_CART
+    CLEAR_CART,
+    REMOVE_CART
 } from './actionTypes';
 
 export const addToCart = (product, quantity) => (dispatch, getState) => {
@@ -43,6 +44,7 @@ export const saveShippingInfo = (data) => (dispatch) => {
 
 export const clearCart = () => (dispatch) => {
     dispatch({ type: CLEAR_CART });
+    dispatch({ type: REMOVE_CART });
     localStorage.removeItem('cartItems');
     sessionStorage.removeItem('orderInfo')
 };

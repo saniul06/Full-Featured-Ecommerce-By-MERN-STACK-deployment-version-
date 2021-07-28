@@ -5,7 +5,8 @@ import {
     TOTAL_ITEM,
     CLEAR_MESSAGES,
     SAVE_SHIPPING_INFO,
-    CLEAR_CART
+    CLEAR_CART,
+    REMOVE_CART
 } from '../actions/actionTypes';
 
 const cartItems = localStorage.getItem('cartItems');
@@ -77,6 +78,12 @@ export const cartReducer = (state = init, action) => {
                 ...state,
                 message: null
             };
+
+        case REMOVE_CART:
+            return {
+                cartItems: [],
+                totalItems: 0,
+            }
 
         default:
             return state;
