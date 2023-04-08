@@ -4,11 +4,11 @@ const connectDatabase = require('./config/database')
 
 // const dotenv = require('dotenv')
 
-const cors = require('cors');
+// const cors = require('cors');
 
 const cloudinary = require('cloudinary')
 
-app.use(cors());
+// app.use(cors());
 
 // dotenv.config({ path: 'backend/config/config.env' })
 if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: './config/config.env' })

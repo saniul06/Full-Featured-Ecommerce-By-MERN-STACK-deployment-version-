@@ -1,10 +1,12 @@
 const express = require('express')
 
-// const morgan = require('morgan');
+const morgan = require('morgan');
 
 const cookieParser = require('cookie-parser')
 
 const fileUpload = require('express-fileupload')
+
+const cors = require('cors');
 
 // const dotenv = require('dotenv')
 
@@ -14,10 +16,12 @@ const path = require('path')
 
 const app = express()
 
+app.use(cors());
+
 // dotenv.config({ path: 'backend/config/config.env' })
 if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: './config/config.env' })
 
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 
 app.use(express.json())
 
@@ -45,6 +49,10 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
         res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
     })
 }
+
+app.get('/health', (req, res) => {
+    res.status(200).json({ success: true })
+})
 
 //handle errors
 app.use(errorMiddleware)
