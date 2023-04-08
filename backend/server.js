@@ -11,7 +11,7 @@ const cloudinary = require('cloudinary')
 app.use(cors());
 
 // dotenv.config({ path: 'backend/config/config.env' })
-if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'backend/config/config.env' })
+if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: './config/config.env' })
 
 //CONFIG cloudinary
 
