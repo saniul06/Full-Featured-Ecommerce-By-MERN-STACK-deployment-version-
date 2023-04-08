@@ -1,4 +1,4 @@
-import axios from 'axios'
+import instance from './instance'
 
 import {
     REGISTER_REQUEST,
@@ -42,7 +42,7 @@ export const login = (email, password) => async dispatch => {
             }
         }
 
-        const { data } = await axios.post(`/api/v1/login`, { email, password }, config)
+        const { data } = await instance.post(`/api/v1/login`, { email, password }, config)
 
         dispatch({ type: LOGIN_SUCCESS, payload: data.user })
 
@@ -56,7 +56,7 @@ export const loadUser = () => async dispatch => {
     try {
         dispatch({ type: LOAD_USER_REQUEST })
 
-        const { data } = await axios.get(`/api/v1/me`)
+        const { data } = await instance.get(`/api/v1/me`)
 
         dispatch({ type: LOAD_USER_SUCCESS, payload: data.user })
 
@@ -74,7 +74,7 @@ export const getAllUsers = () => async dispatch => {
     try {
         dispatch({ type: ALL_USER_REQUEST })
 
-        const { data } = await axios.get(`/api/v1/admin/users`)
+        const { data } = await instance.get(`/api/v1/admin/users`)
 
         dispatch({ type: ALL_USER_SUCCESS, payload: data.users })
 
@@ -93,7 +93,7 @@ export const register = (userData) => async dispatch => {
             }
         }
 
-        const { data } = await axios.post('/api/v1/register', userData, config)
+        const { data } = await instance.post('/api/v1/register', userData, config)
 
         dispatch({ type: REGISTER_SUCCESS, payload: data.user })
 
@@ -113,7 +113,7 @@ export const updateProfile = (userData) => async dispatch => {
             }
         }
 
-        const { data } = await axios.put('/api/v1/me/update', userData, config)
+        const { data } = await instance.put('/api/v1/me/update', userData, config)
 
         dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data })
         dispatch(loadUser())
@@ -131,7 +131,7 @@ export const updatePassword = (userData) => async dispatch => {
     try {
         dispatch({ type: UPDATE_PASSWORD_REQUEST })
 
-        const { data } = await axios.put('/api/v1/me/password/update', userData)
+        const { data } = await instance.put('/api/v1/me/password/update', userData)
 
         dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data })
 
@@ -150,7 +150,7 @@ export const forgotPassword = (email) => async dispatch => {
             }
         }
 
-        const { data } = await axios.post('/api/v1/password/forgot', { email }, config)
+        const { data } = await instance.post('/api/v1/password/forgot', { email }, config)
         dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data })
     } catch (err) {
         console.log('error is:')
@@ -170,7 +170,7 @@ export const resetPassword = (token, passwords) => async dispatch => {
             }
         }
 
-        const { data } = await axios.put(`/api/v1/password/reset/${token}`, passwords, config)
+        const { data } = await instance.put(`/api/v1/password/reset/${token}`, passwords, config)
         dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data })
 
     } catch (err) {
@@ -181,7 +181,7 @@ export const resetPassword = (token, passwords) => async dispatch => {
 
 export const logout = () => async dispatch => {
     try {
-        await axios.get('/api/v1/logout')
+        await instance.get('/api/v1/logout')
 
         dispatch({ type: Logout_SUCCESS })
 
